@@ -1,0 +1,4 @@
+*.zip
+*.o
+*.exe
+.DS_Store
