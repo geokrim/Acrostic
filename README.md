@@ -1,43 +1,40 @@
-# Acrostic — Lexical Analysis & Puzzle Engine
-A high-performance C-based lexical processing system that manages double-linked word databases to generate, solve, and analyze acrostic puzzles from complex text corpora.
+# Acrostic
 
+A command-line text-processing program written in C. It reads large text files, breaks them into words, stores those words in a doubly linked list, and lets you search the list and build acrostics from it. Built as a university data structures project to practice linked lists, dynamic memory, and text parsing.
 
-## Overview
+## What it does
 
-Acrostic is a command-line utility engineered for sophisticated text analysis and dynamic puzzle generation. Built with a focus on memory efficiency and fast retrieval, the system processes large-scale text files into a structured double-linked list, enabling real-time lexical operations and the automated creation of acrostic structures based on varying difficulty parameters.
+- Loads and tokenizes large text files into individual words
+- Cleans the input: removes punctuation, trims whitespace, and normalizes case
+- Stores words in a doubly linked list, with metadata such as an insertion timestamp
+- Uses a prefix-based command interface to insert words, search forward and in reverse, and display entries
+- Builds acrostic structures from the stored words, with a selectable difficulty
+- Saves generated results to a file
 
+## Example texts
 
-### Lexical Database Management
-Double-linked list architecture for efficient bidirectional traversal
-Word frequency tracking and unique character analysis
-Automated timestamping for every lexical insertion via `ctime`
-Memory-safe node deletion and list clearing protocols
+The `example texts/` folder contains sample files to load and test against — news articles, Wikipedia extracts, a novel, and a large list of song titles.
 
-### Text Processing & Normalization
-Robust tokenization engine for sentence-to-word decomposition
-Input sanitization with character-only validation and whitespace trimming
-Case-insensitive processing with automated uppercase normalization
-Bulk loading support for large text corpora (Reuters, Ulysses, etc.)
+## Built with
 
-### Acrostic Generation Engine
-Dynamic generation of vertical and horizontal word structures
-Configurable difficulty levels (Easy/Hard) for puzzle complexity
-Interactive display system for rendered acrostic puzzles
-Export/Save functionality to persist generated puzzles to disk
+- Standard C (`stdio.h`, `stdlib.h`, `string.h`, `ctype.h`, `time.h`)
+- A doubly linked list as the core data structure
 
-### Command Interface
-Intuitive prefix-based command system (e.g., `insert:`, `findfwd:`, `showrev:`)
-Forward and reverse lookup capabilities for database auditing
-Live memory management and exit state handling
+## Build and run
 
-### Core Implementation
-C (Standard) -> Core logic and data structures
-Double-Linked Lists -> Primary data architecture for lexical storage
-`stdio.h` & `stdlib.h` -> I/O and dynamic memory management
-`string.h` & `ctype.h` -> String manipulation and lexical filtering
-`time.h` -> Temporal metadata for database entries
+Compile with GCC:
 
-### Build & Execution
-GCC -> Recommended compiler
-Standard Makefile -> For automated compilation and linking
-Text Assets -> Pre-configured text corpora for immediate database seeding
+```
+gcc Acrostic.c -o acrostic
+```
+
+Run it, then load one of the files in `example texts/` and use the on-screen commands:
+
+```
+./acrostic
+```
+
+## Files
+
+- `Acrostic.c` — the full program
+- `example texts/` — sample text files for testing
